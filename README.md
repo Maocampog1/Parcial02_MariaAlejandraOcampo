@@ -1,6 +1,5 @@
 
 
-````markdown
 # Microservicio Factorial - Parcial 02
 
 Este microservicio en **Flask (Python)** recibe un número por URL y devuelve un **JSON** con:
@@ -21,8 +20,8 @@ python app.py
 Luego abre en el navegador:
 
 * `http://127.0.0.1:5050/` → {"status": "ok"}
-* `http://127.0.0.1:5050/api/factorial/5` → {"numero":5,"factorial":"120","paridad":"impar"}
-* `http://127.0.0.1:5050/api/factorial/8` → {"numero":8,"factorial":"40320","paridad":"par"}
+* `http://127.0.0.1:5050/api/factorial/5` → {"factorial":"120","numero":5,"paridad":"impar"}
+* `http://127.0.0.1:5050/api/factorial/8` → {"factorial":"40320","numero":8,"paridad":"par"}
 
 ---
 
@@ -31,15 +30,17 @@ Luego abre en el navegador:
 
 Si este microservicio tuviera que comunicarse con otro que guarda el historial de cálculos en una base de datos externa:
 
-* Agregaría una **variable de entorno** `HISTORY_URL` con la dirección del servicio de historial.
-* Después de calcular el factorial, enviaría los datos (`número`, `factorial`, `paridad`, `fecha`) con una **petición HTTP POST** usando la librería `requests`.
-* Si el servicio de historial falla, este microservicio seguiría respondiendo normalmente.
+Si este microservicio tuviera que comunicarse con otro que guarda el historial de los cálculos, lo que haría sería enviarle la información del número, su factorial y la paridad después de hacer el cálculo.
+El otro servicio se encargaría de guardar esos datos en su base de datos.
 
-De esta forma se mantiene el **bajo acoplamiento**, la **independencia** entre servicios y la **escalabilidad**, tal como se busca en las **arquitecturas de microservicios**.
+Para eso, solo necesitaría agregar la URL del otro servicio (por ejemplo, en una variable de entorno) y mandar la información con una petición HTTP.
+De esta forma, cada servicio sigue haciendo su parte por separado: uno calcula y el otro guarda el historial.
+Esto mantiene el bajo acoplamiento y permite que ambos funcionen de forma independiente, que es lo que se busca en una arquitectura de microservicios.
 
 ---
 
  **Autor:** María Alejandra Ocampo
+ 
  Arquitectura de Software – Parcial 02
 
 
