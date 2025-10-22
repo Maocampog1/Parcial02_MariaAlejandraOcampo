@@ -22,11 +22,20 @@ Luego abre en el navegador:
 * `http://127.0.0.1:5050/` → {"status": "ok"}
 * `http://127.0.0.1:5050/api/factorial/5` → {"factorial":"120","numero":5,"paridad":"impar"}
 * `http://127.0.0.1:5050/api/factorial/8` → {"factorial":"40320","numero":8,"paridad":"par"}
+--
+
+## NOTA
+
+Al inicio pensé que era necesario usar **Docker** para correr el microservicio, por eso incluí el **Dockerfile**.
+Sin embargo, después entendí que **no era obligatorio para este parcial**, ya que la aplicación se puede ejecutar directamente con `python app.py`.
+De todos modos, el Dockerfile queda listo por si se quiere **empaquetar el servicio** y ejecutarlo dentro de un contenedor en el futuro.
+
+
 
 ---
 
 
-##  **Análisis (pregunta del parcial)**
+#  **Análisis (pregunta del parcial)**
 
 Si este microservicio tuviera que comunicarse con otro que guarda el historial de cálculos en una base de datos externa:
 
